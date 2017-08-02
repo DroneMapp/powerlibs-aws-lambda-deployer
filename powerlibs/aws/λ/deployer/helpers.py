@@ -28,13 +28,11 @@ def read_env_vars(filepath):
         return dict(csv.reader(f, delimiter=str('=')))
 
 
-def zip_package(dir_path):
-    zip_path = os.path.join(settings.BASE_TMP_DIR, 'package')
+def zip_package(dir_path, package_name):
+    zip_path = os.path.join(settings.BASE_TMP_DIR, package_name)
     return shutil.make_archive(zip_path, 'zip', dir_path, '.')
 
 
-def install_requirements():
-    subprocess.Popen(
-        ["pip", "--upgrade", "install", "-r", settings.REQUIREMENTS_FILE],
-        shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE
-    )
+def install_requirements(install_dir):
+    subprocess.Popen(['pip', 'install', '-r', settings.REQUIREMENTS_FILE, '-t', install_dir],
+                     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
