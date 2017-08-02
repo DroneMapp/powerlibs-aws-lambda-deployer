@@ -15,7 +15,7 @@ def main(lambda_settings):
         shutil.copyfile(settings.MODULE_FILE, os.path.join(tmp_dir, os.path.basename(settings.MODULE_FILE)))
         if settings.REQUIREMENTS_FILE:
             logger.info('Installing dependencies..')
-            helpers.install_requirements()
+            helpers.install_requirements(tmp_dir)
         logger.info('Creating .zip...')
         zip_file = helpers.zip_package(tmp_dir)
         logger.info('Pushing lambda...')

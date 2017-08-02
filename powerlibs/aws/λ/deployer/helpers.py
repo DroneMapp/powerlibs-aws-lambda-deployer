@@ -20,7 +20,8 @@ class TempDir(object):
         return self.path
 
     def __exit__(self, *args):
-        shutil.rmtree(self.path)
+        # shutil.rmtree(self.path)
+        pass
 
 
 def read_env_vars(filepath):
@@ -33,8 +34,6 @@ def zip_package(dir_path):
     return shutil.make_archive(zip_path, 'zip', dir_path, '.')
 
 
-def install_requirements():
-    subprocess.Popen(
-        ["pip", "--upgrade", "install", "-r", settings.REQUIREMENTS_FILE],
-        shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE
-    )
+def install_requirements(install_dir):
+    subprocess.Popen(['pip', 'install', '-r', settings.REQUIREMENTS_FILE, '-t', install_dir],
+                     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
