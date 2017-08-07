@@ -36,3 +36,9 @@ def zip_package(dir_path, package_name):
 def install_requirements(install_dir):
     subprocess.Popen(['pip', 'install', '-r', settings.REQUIREMENTS_FILE, '-t', install_dir],
                      stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+
+def copy_modules_files(target_dir):
+    files_paths = (settings.MODULE_FILE, *settings.EXTRA_MODULES)
+    for filepath in files_paths:
+        shutil.copyfile(filepath, os.path.join(target_dir, os.path.basename(filepath)))

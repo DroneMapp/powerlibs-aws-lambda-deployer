@@ -9,6 +9,7 @@ AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', default=None)
 AWS_REGION_NAME = config('AWS_DEFAULT_REGION', default='us-east-1')
 
 MODULE_FILE = config('MODULE_FILE')
+EXTRA_MODULES = config('EXTRA_MODULES', cast=config.tuple, default=None)
 LAMBDA_SETTINGS_FILE = config('LAMBDA_SETTINGS_FILE')
 ENV_FILE = config('ENV_FILE', default=None)
 REQUIREMENTS_FILE = config('REQUIREMENTS_FILE', default=None)
