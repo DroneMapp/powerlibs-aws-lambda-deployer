@@ -3,7 +3,7 @@ try:
 except ImportError:
     from distutils.core import setup
 
-version = '0.1.2'
+version = '0.1.3'
 
 with open('requirements/production.txt') as requirements_file:
     requires = [item for item in requirements_file]
@@ -23,7 +23,7 @@ setup(
     author_email='adolfo.w.s@gmail.com',
     url='https://github.com/Dronemapp/powerlibs-aws-lambda-deployer',
     license=license,
-    packages=['powerlibs.aws.λ.deployer'],
+    packages=['powerlibs', 'powerlibs.aws', 'powerlibs.aws.λ', 'powerlibs.aws.λ.deployer'],
     package_data={'': ['README.md']},
     include_package_data=True,
     install_requires=requires,
