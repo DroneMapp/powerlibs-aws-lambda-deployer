@@ -39,6 +39,6 @@ def install_requirements(install_dir):
 
 
 def copy_modules_files(target_dir):
-    files_paths = (settings.MODULE_FILE, *settings.EXTRA_MODULES)
+    files_paths = (settings.MODULE_FILE, *filter(bool, settings.EXTRA_MODULES))
     for filepath in files_paths:
         shutil.copyfile(filepath, os.path.join(target_dir, os.path.basename(filepath)))
